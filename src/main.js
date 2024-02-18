@@ -26,7 +26,6 @@ refs.formEl.addEventListener('submit', onFormSubmit);
 refs.btnLoadMore.addEventListener('click', onLoadMoreClick);
 
 const pixabayAPI = new PixabayAPI();
-console.log(pixabayAPI);
 
 async function onFormSubmit(e) {
     e.preventDefault();
@@ -51,19 +50,22 @@ async function onFormSubmit(e) {
     }
 }
 
+
 async function onLoadMoreClick() {
     try {
         const data = await pixabayAPI.getMoreImages(currentQuery, currentPage); 
+    
         renderMoreImages(data, refs.imgEl);
         currentPage++; 
-        if (currentPage * PER_PAGE >= data.totalHits) {
+        
+        if (data.hits.length < 15) {
             refs.btnLoadMore.style.display = 'none';
         }
     } catch (error) {
         refs.btnLoadMore.style.display = 'block';
-    }
+    }    
 }
 
- 
+
 
 

@@ -28,13 +28,6 @@ export function showErrorMatch() {
     });
 }
 
-export function showErrorFind() {
-    iziToast.error({
-        position: "topRight",
-        message: 'No images found',
-    });
-}
-
 function imgTemplate(photo) {
     return `
         <div class="photo-container">

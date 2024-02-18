@@ -107,7 +107,7 @@ button:hover {
 
 .photo-body {
   display: flex;
-  gap: 32px;
+  gap: 24px;
   width: 320px;
   height: 48px;
 
@@ -121,6 +121,8 @@ button:hover {
 
 .photo-name {
   display: flex;
+  flex-wrap: wrap;
+  justify-content: space-around;
 }
 
 .span-photo-name {

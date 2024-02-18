@@ -35,10 +35,22 @@ function imgTemplate(photo) {
                 <img src="${photo.webformatURL}" alt="${photo.tags}" class="photo" />
             </a>
             <div class="photo-body">
-                <p class="photo-name">Likes ${photo.likes}</p>
-                <p class="photo-name">Views ${photo.views}</p>
-                <p class="photo-name">Comments ${photo.comments}</p>
-                <p class="photo-name">Downloads ${photo.downloads}</p>
+                <p class="photo-name">
+                <span>Likes</span>
+                <span>${photo.likes}</span>
+                </p>
+                <p class="photo-name">
+                <span>Views</span>
+                <span>${photo.views}</span>
+              </p>
+                <p class="photo-name">
+                <span>Comments</span>
+                <span>${photo.comments}</span>
+                </p>
+                <p class="photo-name">
+                <span>Downloads</span>
+                <span>${photo.downloads}</span>
+                 </p>
             </div>
         </div>
     `;

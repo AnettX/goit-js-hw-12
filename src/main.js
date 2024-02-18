@@ -59,12 +59,21 @@ async function onLoadMoreClick() {
         currentPage++; 
         
         if (data.hits.length < 15) {
+           
             refs.btnLoadMore.style.display = 'none';
+              iziToast.show({
+                title: '',
+                message: "We're sorry, but you've reached the end of search results.",
+                color: 'red',
+                position: 'topRight'
+            });
         }
     } catch (error) {
         refs.btnLoadMore.style.display = 'block';
-    }    
+    }
+    
 }
+
 
 
 

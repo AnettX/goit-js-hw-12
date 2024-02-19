@@ -37,7 +37,6 @@ async function onFormSubmit(e) {
         hideLoader();
      showErrorMatch();
      
-      // Очищення контейнера для зображень
      refs.imgEl.innerHTML = '';
      refs.btnLoadMore.style.display = 'none';
         return; 

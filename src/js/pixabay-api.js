@@ -12,6 +12,9 @@ export class PixabayAPI {
         const params = {
             key: API_KEY,
             q: query,
+            image_type: 'photo',
+            orientation: 'horizontal',
+            safesearch: true,
             page: 1,
             per_page: PER_PAGE,
         };
@@ -24,6 +27,9 @@ export class PixabayAPI {
     const params = {
         key: API_KEY,
         q: query,
+        image_type: 'photo',
+            orientation: 'horizontal',
+            safesearch: true,
         page: page,
         per_page: PER_PAGE,
     };

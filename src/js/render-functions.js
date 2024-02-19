@@ -10,16 +10,38 @@ const options = {
 let lightBox = new SimpleLightbox('.gallery-link', options);
 
 export function renderImages(data, imgEl) {
+     // Очищення контейнера перед рендерингом нових зображень
+    // imgEl.innerHTML = '';
+
     const imagesMarkup = data.hits.map(img => imgTemplate(img)).join('');
     imgEl.innerHTML = imagesMarkup;
     lightBox.refresh();
 }
 
+// export function renderMoreImages(data, imgEl) {
+//     const imagesMarkup = data.hits.map(img => imgTemplate(img)).join('');
+//     imgEl.insertAdjacentHTML('beforeend', imagesMarkup);
+//     lightBox.refresh();
+// }
+
+// export function renderImages(data, imgEl) {
+//     const imagesMarkup = data.hits.map(img => imgTemplate(img)).join('');
+//     imgEl.innerHTML = imagesMarkup;
+//     if (!lightBox) {
+//         lightBox = new SimpleLightbox('.gallery-link', options);
+//     } else {
+//         lightBox.refresh();
+//     }
+// }
+
 export function renderMoreImages(data, imgEl) {
+    console.log(data.hits);
     const imagesMarkup = data.hits.map(img => imgTemplate(img)).join('');
+
     imgEl.insertAdjacentHTML('beforeend', imagesMarkup);
     lightBox.refresh();
 }
+
 
 export function showErrorMatch() {
     iziToast.error({

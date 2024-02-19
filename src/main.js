@@ -31,22 +31,36 @@ async function onFormSubmit(e) {
     e.preventDefault();
     showLoader();
 
-    const query = e.target.elements.text.value;
+    const query = e.target.elements.text.value.trim();
+
+ if (!query.trim()) {
+        hideLoader();
+     showErrorMatch();
+     
+      // Очищення контейнера для зображень
+     refs.imgEl.innerHTML = '';
+     refs.btnLoadMore.style.display = 'none';
+        return; 
+    }
+
     currentQuery = query; 
     currentPage = 1; 
 
     try {
         const data = await pixabayAPI.getImages(query); 
+
         renderImages(data, refs.imgEl);
         if (data.hits.length === 0) {
+        
             throw new Error('No images found');
-        }
-
+            
+        } 
         refs.btnLoadMore.style.display = 'block';
     } catch (error) {
         showErrorMatch();
     } finally {
         hideLoader();
+       
     }
 }
 
@@ -54,7 +68,6 @@ async function onFormSubmit(e) {
 async function onLoadMoreClick() {
     try {
         const data = await pixabayAPI.getMoreImages(currentQuery, currentPage); 
-    
         renderMoreImages(data, refs.imgEl);
         currentPage++; 
         
@@ -69,10 +82,14 @@ async function onLoadMoreClick() {
             });
         }
     } catch (error) {
-        refs.btnLoadMore.style.display = 'block';
+        
+         throw new Error('No images found');
     }
     
 }
+
+
+
 
 
 
